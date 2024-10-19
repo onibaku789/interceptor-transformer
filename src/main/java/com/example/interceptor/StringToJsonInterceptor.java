@@ -1,6 +1,5 @@
 package com.example.interceptor;
 
-
 import org.json.JSONObject;
 
 public class StringToJsonInterceptor implements DataInterceptor<String, JSONObject> {
