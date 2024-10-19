@@ -7,9 +7,6 @@ import com.example.model.DataObject;
 public class JsonToDataObjectInterceptor implements DataInterceptor<JSONObject, DataObject> {
     @Override
     public DataObject intercept(JSONObject input) {
-        return new DataObject()
-                .setName(input.optString("name"))
-                .setAge(input.optInt("age"))
-                .setEmail(input.optString("email"));
+        return new DataObject(input);
     }
 }

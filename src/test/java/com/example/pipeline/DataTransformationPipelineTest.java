@@ -42,14 +42,14 @@ public class DataTransformationPipelineTest {
         System.setOut(originalOut);
 
         assertThat(result).isNotNull();
-        assertThat(result.getName()).isEqualTo("Carol");
-        assertThat(result.getAge()).isEqualTo(42);
-        assertThat(result.getEmail()).isEqualTo("carol@example.com");
+        assertThat(result.name()).isEqualTo("Carol");
+        assertThat(result.age()).isEqualTo(42);
+        assertThat(result.email()).isEqualTo("carol@example.com");
 
         String expectedLogs = String.join(System.lineSeparator(),
                 "LoggingInterceptor - Data: { \"name\": \"Carol\", \"age\": 42, \"email\": \"carol@example.com\" }",
                 "LoggingInterceptor - Data: {\"name\":\"Carol\",\"age\":42,\"email\":\"carol@example.com\"}",
-                "LoggingInterceptor - Data: DataObject{name='Carol', age=42, email='carol@example.com'}",
+                "LoggingInterceptor - Data: DataObject[name=Carol, age=42, email=carol@example.com]",
                 "");
 
         assertThat(outContent).hasToString(expectedLogs);

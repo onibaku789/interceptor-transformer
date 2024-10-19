@@ -19,8 +19,8 @@ class JsonToDataObjectInterceptorTest {
         DataObject result = interceptor.intercept(input);
 
         assertThat(result).isNotNull();
-        assertThat(result.getName()).isEqualTo("Bob");
-        assertThat(result.getAge()).isEqualTo(35);
-        assertThat(result.getEmail()).isEqualTo("bob@example.com");
+        assertThat(result.name()).isEqualTo("Bob");
+        assertThat(result.age()).isEqualTo(35);
+        assertThat(result.email()).isEqualTo("bob@example.com");
     }
 }

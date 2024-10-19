@@ -1,49 +1,17 @@
 package com.example.model;
 
-public final class DataObject {
-    private String name;
-    private int age;
-    private String email;
 
-    // Constructors
-    public DataObject() {
+import org.json.JSONObject;
+
+public record DataObject(String name, int age, String email) {
+    public DataObject {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
     }
 
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public DataObject setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public DataObject setAge(int age) {
-        this.age = age;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public DataObject setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    // toString Method
-    @Override
-    public String toString() {
-        return "DataObject{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                '}';
+    public DataObject(JSONObject jsonObject) {
+        this(jsonObject.optString("name"), jsonObject.optInt("age"), jsonObject.optString("email"));
     }
 }
+
